@@ -1,6 +1,5 @@
 require 'httparty'
 require 'json'
-require 'tast'
 
 
 # This class represents a world traveller who knows what languages are spoken in each country
