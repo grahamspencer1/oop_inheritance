@@ -2,52 +2,46 @@ require_relative 'multilinguist'
 
 class QuoteCollector < Multilinguist
   def initialize
-    @quote = []
+    @quotes = []
   end
 
-  def add(str)
-    @quote << str
+  def add(string)
+    @quotes << string
   end
 
   def all
-    return @quote
+    return @quotes
   end
 
   def random
-    quote = @quote.sample
+    quote = @quotes.sample
     self.say_in_local_language(quote)
   end
 
   def translate(index)
-    puts "Clint Eastwood: #{@quote[index]}"
-    puts "Clint Eastwood: #{self.say_in_local_language(@quote[index])}"
-    puts "The Dude: #{@quote[index]}"
-    puts "The Dude: #{self.say_in_local_language(@quote[index])}"
-    puts "Clint Eastwood: #{@quote[index]}"
-    puts "Clint Eastwood: #{self.say_in_local_language(@quote[index])}"
+    puts "Yogi Berra: #{@quotes[index]}"
+    puts "Translation: #{self.say_in_local_language(@quotes[index])}"
   end
 end
 
-clint_quote = QuoteCollector.new
-dude_quote = QuoteCollector.new
+yogi_quotes = QuoteCollector.new
+yogi_quotes.add("It ain't over till it's over.")
+yogi_quotes.add("When you come to a fork in the road, take it.")
+yogi_quotes.add("It's like déjà vu all over again.")
+yogi_quotes.add("If you don't know where you are going, you'll end up someplace else.")
+yogi_quotes.add("You can observe a lot by just watching.")
 
-clint_quote.add("Go ahead, make my day.")
-dude_quote.add("I'm The Dude, dude.")
+yogi_quotes.travel_to("France")
+yogi_quotes.translate(0)
 
-p clint_quote.all
-puts ""
-p dude_quote.all
-puts ""
+yogi_quotes.travel_to("Spain")
+yogi_quotes.translate(1)
 
-puts "Show randomly translated quote from list:"
-clint_quote.travel_to("France")
-p clint_quote.random
-puts ""
+yogi_quotes.travel_to("Italy")
+yogi_quotes.translate(2)
 
-clint_quote.travel_to("Germany")
-clint_quote.translate(0)
-puts ""
+yogi_quotes.travel_to("Germany")
+yogi_quotes.translate(3)
 
-clint_quote.travel_to("Japan")
-clint_quote.translate(3)
-puts ""
+yogi_quotes.travel_to("Finland")
+yogi_quotes.translate(4)
